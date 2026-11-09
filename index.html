@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="disabled-adaptations" content="watch">
+<meta name="theme-color" content="#0d0f12">
+<title>Spanisch</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e8a33d'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial' font-size='42' font-weight='bold' fill='%230d0f12'%3EES%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0d0f12;
+    --panel: #181b20;
+    --line: #2a2f37;
+    --ink: #f2f2ee;
+    --muted: #8d939c;
+    --gold: #e8a33d;
+    --red: #ff6b5e;
+    --blue: #6fb3ff;
+    --green: #6ad19a;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; background: var(--bg); }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px; line-height: 1.35;
+  }
+  .shell { max-width: 520px; margin: 0 auto; padding: 0 16px 40px; }
+
+  nav.tabs {
+    position: sticky; top: 0; z-index: 5;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
+    padding: 10px 0; background: var(--bg);
+  }
+  nav.tabs button {
+    min-height: 44px; border: 0; border-radius: 12px;
+    background: var(--panel); color: var(--muted);
+    font: inherit; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+  }
+  nav.tabs button[aria-selected="true"] { background: var(--gold); color: #0d0f12; }
+
+  section[hidden] { display: none; }
+  h2 {
+    margin: 18px 0 8px; font-size: 1.3rem; line-height: 1.1;
+    display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  }
+  h2 small { color: var(--muted); font-size: 0.8rem; font-weight: 600; }
+  h2:first-child { margin-top: 6px; }
+
+  .card { background: var(--panel); border-radius: 14px; padding: 4px 12px; margin-bottom: 10px; }
+  .row {
+    display: grid; grid-template-columns: 42% 1fr; gap: 8px; align-items: baseline;
+    padding: 7px 0; border-bottom: 1px solid var(--line);
+  }
+  .row:last-child { border-bottom: 0; }
+  .p { color: var(--muted); font-size: 0.85rem; }
+  .f { font-weight: 700; font-size: 1.05rem; }
+  .f b { color: var(--gold); }
+  .f i { font-style: normal; color: var(--red); }
+
+  .jump { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; margin: 6px 0 4px; }
+  .jump a {
+    display: block; padding: 8px 0; border-radius: 10px; background: var(--panel);
+    color: var(--ink); text-align: center; text-decoration: none; font-weight: 700; font-size: 0.85rem;
+  }
+  .num { display: grid; grid-template-columns: 2.4em 1fr; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .num:last-child { border-bottom: 0; }
+  .num .n { color: var(--muted); font-variant-numeric: tabular-nums; text-align: right; font-weight: 600; }
+  .num .w { font-weight: 700; }
+  .num.ten .n { color: var(--gold); }
+  .num.ten .w { color: var(--gold); }
+  .tens { scroll-margin-top: 70px; }
+
+  .voc { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--line); }
+  .voc:last-child { border-bottom: 0; }
+  .voc .es { font-weight: 700; }
+  .voc .de { color: var(--muted); }
+  .empty { color: var(--muted); padding: 12px 0; text-align: center; }
+
+  /* Apple Watch */
+  @media (max-width: 230px) {
+    body { font-size: 15px; }
+    .shell { padding: 0 3px 24px; }
+    nav.tabs { gap: 3px; padding: 4px 0 6px; }
+    nav.tabs button { min-height: 34px; border-radius: 9px; font-size: 0.72rem; padding: 0; }
+    h2 { margin: 12px 0 5px; font-size: 1.05rem; }
+    h2 small { font-size: 0.7rem; }
+    .card { padding: 2px 7px; border-radius: 10px; margin-bottom: 7px; }
+    .row { grid-template-columns: 1fr; gap: 0; padding: 5px 0; }
+    .p { font-size: 0.72rem; }
+    .f { font-size: 1rem; }
+    .jump { grid-template-columns: repeat(5, 1fr); gap: 3px; }
+    .jump a { padding: 6px 0; font-size: 0.72rem; border-radius: 7px; }
+    .num { grid-template-columns: 1.9em 1fr; gap: 6px; padding: 4px 0; }
+    .num .w { font-size: 0.95rem; }
+    .tens { scroll-margin-top: 50px; }
+    .voc { grid-template-columns: 1fr; gap: 0; padding: 5px 0; }
+  }
+</style>
+</head>
+<body>
+<main class="shell">
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="verben" aria-selected="true">Verben</button>
+    <button role="tab" data-tab="zahlen" aria-selected="false">Zahlen</button>
+    <button role="tab" data-tab="vokabeln" aria-selected="false">Vokabeln</button>
+  </nav>
+
+  <section id="verben"></section>
+  <section id="zahlen" hidden></section>
+  <section id="vokabeln" hidden></section>
+</main>
+
+<script>
+/* ===== Inhalte ===== */
+const PERSONEN = ["yo", "tú", "él / ella / usted", "nosotros / -as", "vosotros / -as", "ellos / ellas / ustedes"];
+
+// <b>…</b> = Endung, <i>…</i> = unregelmäßig
+const VERBEN = [
+  { titel: "tener", de: "haben", formen: ["<i>teng</i><b>o</b>", "<i>tien</i><b>es</b>", "<i>tien</i><b>e</b>", "ten<b>emos</b>", "ten<b>éis</b>", "<i>tien</i><b>en</b>"] },
+  { titel: "ser", de: "sein", formen: ["<i>soy</i>", "<i>eres</i>", "<i>es</i>", "<i>somos</i>", "<i>sois</i>", "<i>son</i>"] },
+  { titel: "-ar", de: "Endungen", formen: ["-<b>o</b>", "-<b>as</b>", "-<b>a</b>", "-<b>amos</b>", "-<b>áis</b>", "-<b>an</b>"] },
+  { titel: "hablar", de: "sprechen", formen: ["habl<b>o</b>", "habl<b>as</b>", "habl<b>a</b>", "habl<b>amos</b>", "habl<b>áis</b>", "habl<b>an</b>"] }
+];
+
+const EINER = ["", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez",
+  "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve", "veinte",
+  "veintiuno", "veintidós", "veintitrés", "veinticuatro", "veinticinco", "veintiséis", "veintisiete", "veintiocho", "veintinueve"];
+const ZEHNER = { 3: "treinta", 4: "cuarenta", 5: "cincuenta", 6: "sesenta", 7: "setenta", 8: "ochenta", 9: "noventa" };
+
+// Eigene Vokabeln hier eintragen: ["español", "deutsch"],
+const VOKABELN = [
+];
+
+/* ===== Aufbau ===== */
+function zahlwort(n) {
+  if (n === 100) return "cien";
+  if (n < 30) return EINER[n];
+  const z = Math.floor(n / 10), e = n % 10;
+  return e ? `${ZEHNER[z]} y ${EINER[e]}` : ZEHNER[z];
+}
+
+document.getElementById("verben").innerHTML = VERBEN.map((v, i) => `
+  <h2>${v.titel} <small>${v.de}</small></h2>
+  <div class="card">${v.formen.map((f, k) => `
+    <div class="row"><span class="p">${PERSONEN[k]}</span><span class="f">${f}</span></div>`).join("")}
+  </div>`).join("");
+
+let zahlen = `<div class="jump">${[1, 11, 21, 31, 41, 51, 61, 71, 81, 91].map(n => `<a href="#z${n}">${n}</a>`).join("")}</div>`;
+for (let start = 1; start <= 91; start += 10) {
+  const ende = start === 91 ? 100 : start + 9;
+  zahlen += `<h2 class="tens" id="z${start}">${start}–${ende}</h2><div class="card">`;
+  for (let n = start; n <= ende; n++) {
+    zahlen += `<div class="num${n % 10 === 0 ? " ten" : ""}"><span class="n">${n}</span><span class="w">${zahlwort(n)}</span></div>`;
+  }
+  zahlen += `</div>`;
+}
+document.getElementById("zahlen").innerHTML = zahlen;
+
+document.getElementById("vokabeln").innerHTML = VOKABELN.length
+  ? `<div class="card">${VOKABELN.map(([es, de]) => `<div class="voc"><span class="es">${es}</span><span class="de">${de}</span></div>`).join("")}</div>`
+  : `<p class="empty">–</p>`;
+
+/* ===== Reiter ===== */
+const tabs = document.querySelectorAll("nav.tabs button");
+function zeige(name) {
+  tabs.forEach(t => t.setAttribute("aria-selected", t.dataset.tab === name));
+  document.querySelectorAll("section").forEach(s => s.hidden = s.id !== name);
+  try { localStorage.setItem("tab", name); } catch (e) {}
+}
+tabs.forEach(t => t.addEventListener("click", () => { zeige(t.dataset.tab); window.scrollTo(0, 0); }));
+document.querySelectorAll(".jump a").forEach(a => a.addEventListener("click", ev => {
+  ev.preventDefault();
+  document.querySelector(a.getAttribute("href")).scrollIntoView({ block: "start" });
+}));
+try { const t = localStorage.getItem("tab"); if (t && document.getElementById(t)) zeige(t); } catch (e) {}
+</script>
+</body>
+</html>
