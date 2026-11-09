@@ -108,6 +108,8 @@
 </head>
 <body>
 <main class="shell">
+  <button id="solution-toggle" type="button" aria-expanded="false" aria-controls="loesungen" style="display:block;width:100%;min-height:36px;margin:6px 0 4px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);font:inherit;font-size:0.85rem;font-weight:700;cursor:pointer;">📝 Lösungen</button>
+  <section id="loesungen" hidden><div id="solution-content" class="card"><p class="empty">Noch keine Lösungen vorhanden.</p></div></section>
   <nav class="tabs" role="tablist">
     <button role="tab" data-tab="verben" aria-selected="true">Verben</button>
     <button role="tab" data-tab="zahlen" aria-selected="false">Zahlen</button>
@@ -386,6 +388,16 @@ document.getElementById("vokabeln").innerHTML =
   <div class="card">${g.w.map(([es, de]) => `
     <div class="voc"><span class="es">${es}</span><span class="de">${de}</span></div>`).join("")}
   </div>`).join("");
+
+/* ===== Lösungen (neue Aufgaben hier als HTML einfügen) ===== */
+const SOLUTIONS_HTML = ""; // z.B. "<h2>Aufgabe 1</h2><div class=\"card\">...</div>"
+if (SOLUTIONS_HTML.trim()) document.getElementById("solution-content").innerHTML = SOLUTIONS_HTML;
+const solutionToggle = document.getElementById("solution-toggle");
+solutionToggle.addEventListener("click", () => {
+  const panel = document.getElementById("loesungen");
+  panel.hidden = !panel.hidden;
+  solutionToggle.setAttribute("aria-expanded", String(!panel.hidden));
+});
 
 /* ===== Reiter ===== */
 const tabs = document.querySelectorAll("nav.tabs button");
