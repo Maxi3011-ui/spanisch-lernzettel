@@ -403,7 +403,7 @@ solutionToggle.addEventListener("click", () => {
 const tabs = document.querySelectorAll("nav.tabs button");
 function zeige(name) {
   tabs.forEach(t => t.setAttribute("aria-selected", t.dataset.tab === name));
-  document.querySelectorAll("section").forEach(s => s.hidden = s.id !== name);
+  document.querySelectorAll("nav.tabs + section, #zahlen, #vokabeln").forEach(s => s.hidden = s.id !== name);
   try { localStorage.setItem("tab", name); } catch (e) {}
 }
 tabs.forEach(t => t.addEventListener("click", () => { zeige(t.dataset.tab); window.scrollTo(0, 0); }));
