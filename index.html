@@ -365,7 +365,7 @@ document.getElementById("verben").innerHTML = VERBEN.map((v, i) => `
   <h2>${v.titel} <small>${v.de}</small></h2>
   <div class="card">${v.formen.map((f, k) => `
     <div class="row"><span class="p">${PERSONEN[k]}</span><span class="f">${f}</span></div>`).join("")}
-  </div>`).join("");
+  </div>`).join("") + `<div style="text-align:center;font-size:64px;padding:18px 0;">💩</div>`;
 
 let zahlen = `<div class="jump">${[1, 11, 21, 31, 41, 51, 61, 71, 81, 91].map(n => `<a href="#z${n}">${n}</a>`).join("")}</div>`;
 for (let start = 1; start <= 91; start += 10) {
