@@ -379,6 +379,7 @@ for (let start = 1; start <= 91; start += 10) {
 document.getElementById("zahlen").innerHTML = zahlen;
 
 document.getElementById("vokabeln").innerHTML =
+  `<div style="font-size:clamp(38px,18vw,80px);font-weight:900;text-align:center;color:var(--gold);line-height:1.15;padding:16px 0 20px;">TEST</div>` +
   `<div class="jump themen">${VOKABELN.map((g, i) => `<a href="#v${i}"><span>${g.icon}</span>${g.titel}</a>`).join("")}</div>` +
   VOKABELN.map((g, i) => `
   <h2 class="tens" id="v${i}">${g.icon} ${g.titel} <small>${g.w.length}</small></h2>
